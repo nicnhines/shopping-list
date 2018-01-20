@@ -1,6 +1,20 @@
-function ShoppingListItem(name, description, is_done) {
-  this.name = name;
-  this.description = "description";
-  this.is_done = true;
+class ShoppingListItem {
+  constructor(name, description) {
+    this.name = name;
+    this.description = " ";
+    this.is_done = false;
+    }
+    check(){
+      return this.is_done = true;
 
+    }
+
+    unCheck(){
+      return this.is_done = false;
+
+    }
+    render(){
+      return `$<li>`;
+
+    }
 };
