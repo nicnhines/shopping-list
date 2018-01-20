@@ -30,9 +30,8 @@ describe('ShoppingListItem', function () {
     let red = new ShoppingListItem("Red");
     red.name.should.equal('Red');
   });
-  // it('Should have property description',function () {
-  //   expect(item).to.have.property('description');
-  //   expect(item.name).to.be('description');
-  // })
-
+  it('should have a is_done property', function () {
+    let done = new ShoppingListItem(true);
+    done.name.should.equal(true);
+  });
 });
