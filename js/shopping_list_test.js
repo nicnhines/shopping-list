@@ -1,7 +1,14 @@
 const expect = chai.expect;
 const should = chai.should();
-let item;
+let sandbox;
 
+// beforeEach(function(){
+//   sandbox = sinon.sandbox.create();
+
+// });
+// afterEach(function() {
+//   sandbox.restore();
+// });
 describe('ShoppingListItem', function () {
   it('Should be a class', function () {
     expect(ShoppingListItem).to.be.a('function');
@@ -23,9 +30,11 @@ describe('ShoppingListItem', function () {
     let item = new ShoppingListItem("item");
     item.name.should.equal("item");
   });
-  it('Should have constructor', function () {
-    expect(ShoppingListItem).to.be.a('function');
+  it('Should have constructor with name parameter', function () {
+    let sho = new ShoppingListItem
+    expect(sho).to.have.constructor('name','description');
   });
+  
   describe('check', function () {
     it('Should have check method', function () {
       let shopping = new ShoppingListItem("apple", "red")
@@ -40,10 +49,47 @@ describe('ShoppingListItem', function () {
     });
   });
   describe('render', function () {
-    it('Should have render method', function () {
+
+
+    it('Should return a string', function () {
       let shoppingNow = new ShoppingListItem;
       expect(shoppingNow.render()).to.equal(`$<li>`);
-
     });
   });
+});
+
+let arr;
+describe('ShoppingList', function () {
+  it('Should be a class', function () {
+    expect(ShoppingList).to.be.a('function');
+  });
+  it('Should have a items property', function () {
+    let item = new ShoppingList;
+    expect(item).to.have.property('items');
+  });
+  it('Item should be an array', function () {
+    let item = new ShoppingList();
+    expect(item.items).to.be.an('Array');
+    describe('addItem', function () {
+      it('Should be a method', function () {
+        expect(item.addItem).to.be.a('function');
+      });
+      it('Should invoke addItem by passing ShoppingListItem into items', function () {
+        let apple = new ShoppingListItem('apple', 'red');
+        let banana = new ShoppingListItem('banana', 'yellow');
+        let orange = new ShoppingListItem('orange', 'orange');
+        item.addItem(apple);
+        item.addItem(banana);
+        item.addItem(orange);
+        expect(item.items).to.contain(apple, banana, orange);
+      });
+      it('Should throw error if adding item that is not in ShoppingListItem', function () {
+        
+        // expect(item.addItem.bind(item,'z')).to.throw('Item not in shoppingList')
+        // expect(item.addItem.bind(item,'z')).to.throw(new Error('Item not in shoppingList'))nu
+        expect(item.addItem.bind(item,'z')).to.throw('item')
+      })
+    });
+  });
+
 });
