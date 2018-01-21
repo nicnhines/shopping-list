@@ -52,8 +52,8 @@ describe('ShoppingListItem', function () {
 
 
     it('Should return a string', function () {
-      let shoppingNow = new ShoppingListItem;
-      expect(shoppingNow.render()).to.equal(`$<li>`);
+      let shoppingNow = new ShoppingListItem('apple', 'red');
+      expect(shoppingNow.render()).to.equal(`<li class="completed_false"><span>apple</span><span>red</span></li>`);
     });
   });
 });
@@ -106,6 +106,15 @@ describe('ShoppingList', function () {
       it('Should throw error if removing item that is not in ShoppingListItem', function () {
         expect(item.removeItem.bind(item,'z')).to.throw('item')
       });
+    });
+    describe('render', function () {
+      
+      it('Should return a string', function () {
+        let item = new ShoppingListItem('apple', 'red');
+        //expect(item.render()).to.equal(`$<ul>`);
+        
+      });
+      
     });
   });
 

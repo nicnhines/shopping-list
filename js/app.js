@@ -1,7 +1,7 @@
 class ShoppingListItem {
-  constructor(name, descripton) {
+  constructor(name, description) {
     this.name = name;
-    this.description = ' ';
+    this.description = description;
     this.is_done = false;
   }
   check() {
@@ -14,7 +14,7 @@ class ShoppingListItem {
 
   }
   render() {
-    return `$<li>`;
+    return `<li class="completed_${this.is_done}"><span>${this.name}</span><span>${this.description}</span></li>`;
 
   }
 };
@@ -39,4 +39,15 @@ class ShoppingList {
       throw new Error('item');
     }
   };
+
+  render() {
+    let ul = `<ul>`;
+    let closeUl = `</ul>`;
+    for(let i = 0; i < items.length; i++) {
+      let rendered = items[i].render();
+      console.log(rendered);
+    }
+
+    return  ul + ' ' + rendered + ' ' + closeUl ;
+  }
 };
