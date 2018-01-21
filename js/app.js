@@ -31,4 +31,12 @@ class ShoppingList {
       throw new Error('item');
     }
   };
+  removeItem(item) {
+    if (item instanceof ShoppingListItem) {
+      this.items.pop(item);
+      
+    }else{
+      throw new Error('item');
+    }
+  };
 };

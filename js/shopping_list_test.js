@@ -88,7 +88,24 @@ describe('ShoppingList', function () {
         // expect(item.addItem.bind(item,'z')).to.throw('Item not in shoppingList')
         // expect(item.addItem.bind(item,'z')).to.throw(new Error('Item not in shoppingList'))nu
         expect(item.addItem.bind(item,'z')).to.throw('item')
-      })
+      });
+    });
+    describe('removeItem', function () {
+      it('Should be a method', function () {
+        expect(item.removeItem).to.be.a('function');
+      });
+      it('Should invoke removeItem by removing items ShoppingListItem ', function () {
+        let apple = new ShoppingListItem('apple', 'red');
+        let banana = new ShoppingListItem('banana', 'yellow');
+        let orange = new ShoppingListItem('orange', 'orange');
+        item.removeItem(apple);
+        item.removeItem(banana);
+        item.removeItem(orange);
+        expect(item.items).to.not.contain(apple, banana, orange);
+      });
+      it('Should throw error if removing item that is not in ShoppingListItem', function () {
+        expect(item.removeItem.bind(item,'z')).to.throw('item')
+      });
     });
   });
 
